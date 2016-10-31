@@ -1,0 +1,41 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "jspm install && npm run build",
+    "release": "node scripts/version",
+    "dev": "npm run build:copy && jspm bundle-sfx src/main dist/main.js",
+    "build": "npm run release && npm run build:copy && npm run build:compile && npm run build:finalize",
+    "build:copy": "node scripts/copy",
+    "build:compile": "NODE_ENV=production jspm bundle-sfx src/main --minify --skip-source-maps dist/main.js",
+    "build:finalize": "node scripts/build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "archiver": "^1.1.0",
+    "chrome-location": "https://github.com/CodersAKL/chrome-location.git#master",
+    "fs-extra": "^0.30.0",
+    "jspm": "^0.16.47",
+    "pretty-bytes": "^4.0.2",
+    "sanitize-filename": "^1.6.1",
+    "semver": "^5.3.0"
+  },
+  "jspm": {
+    "directories": {
+      "packages": "lib"
+    },
+    "configFile": "lib/config.js",
+    "dependencies": {
+      "lodash": "npm:lodash@^4.16.5"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+.ide/
+node_modules/
+lib/
+!/lib/config.js
